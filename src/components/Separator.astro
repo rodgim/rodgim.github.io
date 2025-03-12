@@ -1,0 +1,33 @@
+---
+export interface SeparatorProps {
+	type?: "horizontal" | "vertical" | "dot"; // Separator type
+	className?: string; // Additional classes
+}
+
+const { type = "horizontal", className = "" } = Astro.props;
+
+// Classes for separators depending on the type
+const separatorClasses = {
+	base: "flex-shrink-0 bg-lighter mx-2", // General styles
+	types: {
+		horizontal: "h-[1px] w-full", // Horizontal divider
+		vertical: "h-full w-[1px]", // Vertical divider
+		dot: "w-1.5 h-1.5 rounded-full", // Circle for dot
+	} as const, // We indicate that the types here are specific strings
+};
+
+// Make sure type is one of the valid types
+const typeClass = separatorClasses.types[type as keyof typeof separatorClasses.types];
+---
+
+{
+	type === "dot" ? (
+		<span class={`${separatorClasses.base} ${typeClass} ${className}`} />
+	) : (
+		<span
+			role="separator"
+			aria-orientation={type === "horizontal" ? "horizontal" : "vertical"}
+			class={`${separatorClasses.base} ${typeClass} ${className}`}
+		/>
+	)
+}
