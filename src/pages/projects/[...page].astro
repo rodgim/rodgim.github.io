@@ -1,11 +1,42 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import Pagination from "@/components/Paginator.astro";
+import { Image } from 'astro:assets'
+
+import { getCollection } from "astro:content";
 import Project from "@/components/project/Project.astro";
+import ProjectCard from '@/components/project/ProjectCard.astro';
 import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
-import type { GetStaticPaths, Page } from "astro";
-import { Icon } from "astro-icon/components";
+import type { GetStaticPaths } from "astro";
+import PageHeading from "@/components/PageHeading.astro";
+import data from "../../data/projects.json";
+
+interface Project {
+  name: string;
+  description: string;
+  stars: number;
+  role: "author" | "contributor" | "maintainer";
+  url: string;
+  tags: string[];
+  website: string | null
+}
+
+const projects = data as Project[];
+
+projects.sort((a, b) => {
+  if (a.role === "maintainer" && b.role !== "maintainer") {
+    return -1;
+  }
+  if (a.role === "maintainer" && b.role === "maintainer") {
+    return a.stars > b.stars ? -1 : 1;
+  }
+  if (a.role === "author" && b.role === "author") {
+    return a.stars > b.stars ? -1 : 1;
+  }
+  if (a.role === "author" && b.role !== "author") {
+    return -1;
+  }
+  return 0;
+});
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const MAX_PROJECTS_PER_PAGE = 5;
@@ -13,53 +44,53 @@ export const getStaticPaths = (async ({ paginate }) => {
 	return paginate(allProjects.sort(collectionDateSort), { pageSize: MAX_PROJECTS_PER_PAGE });
 }) satisfies GetStaticPaths;
 
-interface Props {
-	page: Page<CollectionEntry<"project">>;
-	uniqueTags: string[];
-}
-
-const { page } = Astro.props;
-
 const meta = {
 	description: "View my collection of projects",
 	title: "Projects",
-};
-
-const paginationProps = {
-	...(page.url.prev && {
-		prevUrl: {
-			text: "← Previous Page",
-			url: page.url.prev,
-		},
-	}),
-	...(page.url.next && {
-		nextUrl: {
-			text: "Next Page →",
-			url: page.url.next,
-		},
-	}),
 };
 ---
 
 <PageLayout meta={meta}>
 	<section>
-		<h1 class="title mb-6 flex items-center gap-2">
-			Projects
-			<a class="text-accent-two" href="/projects/rss.xml" target="_blank">
-				<span class="sr-only">RSS feed</span>
-				<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
-			</a>
-		</h1>
-		<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-			{
-				page.data.map((project) => (
-					<div>
-						<Project project={project} as="h4" isPreview />
-					</div>
-				))
-			}
+		<PageHeading
+      		title="My Projects"
+      		description="Here are some of the projects I’m currently working on. I love bringing new ideas to life and creating innovative projects. I’m constantly exploring and building something fresh, so be sure to check back for updates!"
+    	/>
+		<h2
+		  class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+		>
+		Github Activities:
+		</h2>
+		<p>
+		  <Image
+			src='https://ghchart.rshah.org/d8aa96/rodgim'
+			alt='github activities'
+			inferSize
+			loading='lazy'
+		  />
+		</p>
+		<h2
+		  class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+		>
+		Open Source:
+		</h2>
+		<div>
+			<ul class="grid grid-cols-1 gap-8">
+				{
+					projects.map((project) => (
+					  <ProjectCard
+						name={project.name}
+						description={project.description}
+						stars={project.stars}
+						role={project.role}
+						url={project.url}
+						tags={project.tags}
+						website={project.website || ""}
+					  />
+					))
+				  }
+			</ul>
 		</div>
 
-		<Pagination {...paginationProps} />
 	</section>
 </PageLayout>

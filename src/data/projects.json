@@ -1,0 +1,57 @@
+[
+    {
+      "name": "MyNotes",
+      "stars": 0,
+      "url": "https://github.com/rodgim/MyNotes",
+      "description": null,
+      "tags": [
+        "Kotlin", "Compose", "Hilt"
+      ],
+      "website": null,
+      "role": "author"
+    },
+    {
+      "name": "movies",
+      "stars": 0,
+      "url": "https://github.com/rodgim/movies",
+      "description": "Movies is a sample Android project using The Movie DB API based on MVVM architecture.",
+      "tags": [
+        "Kotlin", "XML"
+      ],
+      "website": null,
+      "role": "author"
+    },
+    {
+        "name": "Pokedex",
+        "stars": 0,
+        "url": "https://github.com/rodgim/Pokedex",
+        "description": null,
+        "tags": [
+          "Kotlin", "Compose"
+        ],
+        "website": null,
+        "role": "author"
+      },
+      {
+        "name": "RunningTracker",
+        "stars": 0,
+        "url": "https://github.com/rodgim/RunningTracker",
+        "description": null,
+        "tags": [
+          "Kotlin"
+        ],
+        "website": null,
+        "role": "author"
+      },
+      {
+        "name": "News",
+        "stars": 0,
+        "url": "https://github.com/rodgim/news",
+        "description": "News is a sample Android project, using The News API for the data, based on MVVM and Clean architecture.",
+        "tags": [
+          "Kotlin", "MVVM", "XML", "Retrofit"
+        ],
+        "website": null,
+        "role": "author"
+      }
+  ]
