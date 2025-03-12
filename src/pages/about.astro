@@ -1,19 +1,103 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
+import PageHeading from "@/components/PageHeading.astro";
+import AboutExperience from "@/components/about/AboutExperience.astro";
+import SkillSection from "@/components/about/SkillSection.astro"
+import SkillLayout from "@/components/SkillLayout.astro";
 
 const meta = {
-	description: "I'm a starter theme for Astro.build",
-	title: "About",
+	description: "Information about me",
+	title: "About me",
 };
+const languages = ['Kotlin', 'Java']
+const tools = ['Android Studio', 'Git', 'Github', 'Figma']
+const libraries = ['Jetpack Compose', 'Room', 'Retrofit', 'Hilt']
 ---
 
 <PageLayout meta={meta}>
 
-	<h1 class="title mb-6">About</h1>
-	<div class="prose prose-citrus max-w-none">
-		<p>
-			Hi, 
+	<section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+		<PageHeading
+		  title="About Me"
+		  description="Hello 👋 I'm an android engineer from Paraguay. I'm passionate about building new products and learning new technology."
+		/>
+	
+		<h2
+		  class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+		>
+		  Experience
+		</h2>
+		<div class="px-5 py-10 pb-0">
+		  <AboutExperience>
+		</div>
+
+		<!-- <h2
+		  class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+		>
+		  Skills
+		</h2>
+		<div class="px-5 py-10 pb-0">
+			<SkillSection
+			class = 'mb-5'
+			title="Languages"
+			skills={[
+			{
+				name: 'Kotlin',
+				icon: '/assets/skills/kotlin.svg?raw'
+			},
+			{
+				name: 'Java',
+				icon: '/assets/skills/java.svg?raw'
+			}
+			]}
+			/>
+		</div>
+		<div class="px-5 py-10 pb-0">
+			<SkillSection
+			class = 'mb-5'
+			title="Development Tools"
+			skills={[
+			{
+				name: 'Git',
+				icon: '/assets/skills/git.svg?raw'
+			},
+			{
+				name: 'Github',
+				icon: '/assets/skills/github.svg?raw'
+			},
+			{
+				name: 'Figma',
+				icon: '/assets/skills/figma.svg?raw'
+			},
+			{
+				name: 'Android Studio',
+				icon: '/assets/skills/android-studio.svg?raw'
+			}
+			]}
+			/>
+		</div>-->
+		<h2
+		  class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+		>
+		  Skills
+		</h2>
+
+		<SkillLayout title='Languages' skills={languages} />
+        <SkillLayout title='Tools' skills={tools} />
+        <SkillLayout title='Libraries' skills={libraries} />
+	
+		<h2 class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Let's Connect</h2>
+		<p
+		  class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+		>
+		  If you want to stay up to date with my work be sure to <a
+			href="https://github.com/rodgim"
+			target="_blank"
+			class="text-indigo-600 underline">follow me on github</a
+		  >, or you can send me an <a href="mailto:rodrigo_g90@hotmail.es" class="text-indigo-600 underline"
+			>email</a
+		  > and I'll be sure to get back to you.
 		</p>
-	</div>
+	  </section>
 
 </PageLayout>

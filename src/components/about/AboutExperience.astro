@@ -1,0 +1,59 @@
+---
+const experiences: {
+	dates: string;
+	role: string;
+	company: string;
+	description: string;
+    logo: string
+}[] = [
+	{
+		dates: "Feb 2022 - Mar 2023",
+		role: "Android Developer",
+		company: "SweatWorks",
+        description: "Responsible for developing Android features related to the fitness industry.",
+        logo: "/assets/images/sweatworks.jpeg"
+	},
+	{
+		dates: "Sep 2021 - Jan 2022",
+		role: "Android Developer",
+		company: "ThinkUp",
+        description: "Responsible for developing features and fixing errors in Android applications.",
+        logo: "/assets/images/thinkup.jpeg"
+	},
+	{
+		dates: "Aug 2018 - Mar 2021",
+		role: "Android Developer",
+		company: "Roshka",
+        description: "Responsible for developing features and fixing errors in Android applications related to the banking industry.",
+        logo: "/assets/images/roshka.jpeg"
+	},
+    {
+        dates: "Nov 2016 - Jun 2018 ",
+		role: "Back-end Developer and Android Developer",
+		company: "Teixidó",
+        description: "Responsible for developing features and fixing errors in Android applications.",
+        logo: "/assets/images/teixido.jpeg"
+    }
+];
+---
+
+{
+    experiences.map(({ dates, role, company, description, logo }) => (
+    <div class="pb-10 border-l border-gray-200 last:border-l-0 dark:border-neutral-700">
+        <div class="relative flex flex-col justify-start pl-12">
+            <div class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-white border rounded-full dark:bg-neutral-950 w-14 h-14 border-neutral-300 dark:border-neutral-700">
+                <img src={logo} alt={company} class="w-8 h-8" />
+            </div>
+
+            <p class="text-xs uppercase text-neutral-400 dark:text-neutral-500 trackign-widest">
+                {dates}
+            </p>
+            <h3 class="my-1 text-lg font-bold dark:text-neutral-100">{role}</h3>
+            <p class="mb-1 text-sm font-medium dark:text-neutral-300">{company}</p>
+            <p class="text-sm font-light text-neutral-600 dark:text-neutral-400">
+                {description}
+            </p>
+        </div>
+    </div>
+    ))
+}

@@ -46,7 +46,7 @@ export default defineConfig({
       /**
        * optional
        **/
-      // short_name: "Astro_Citrus",
+      // short_name: "Astro_Rodgim",
       description: siteConfig.description,
       lang: siteConfig.lang,
       icon: "public/icon.svg", // the source for generating favicon & icons
