@@ -3,9 +3,9 @@
       "name": "MyNotes",
       "stars": 0,
       "url": "https://github.com/rodgim/MyNotes",
-      "description": null,
+      "description": "An Android note-taking app built with Jetpack Compose and Material 3, demonstrating modern Android development practices with Room, Hilt, and comprehensive testing.",
       "tags": [
-        "Kotlin", "Compose", "Hilt"
+        "Kotlin", "Compose", "Hilt", "Room"
       ],
       "website": null,
       "role": "author"
@@ -14,9 +14,9 @@
       "name": "movies",
       "stars": 0,
       "url": "https://github.com/rodgim/movies",
-      "description": "Movies is a sample Android project using The Movie DB API based on MVVM architecture.",
+      "description": "Android movie discovery app built with:  Clean Architecture, MVVM pattern, Koin DI and Unit Testing.",
       "tags": [
-        "Kotlin", "XML"
+        "Kotlin", "XML", "Koin"
       ],
       "website": null,
       "role": "author"
@@ -25,9 +25,9 @@
         "name": "Pokedex",
         "stars": 0,
         "url": "https://github.com/rodgim/Pokedex",
-        "description": null,
+        "description": "Pokédex Android App w/ Compose, Retrofit, Hilt & Clean Architecture.",
         "tags": [
-          "Kotlin", "Compose"
+          "Kotlin", "Compose", "Hilt"
         ],
         "website": null,
         "role": "author"
